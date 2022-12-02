@@ -1,0 +1,34 @@
+.trellie{
+    background: #dddddd;
+    width: 35rem;
+    padding: 1rem;
+    border-radius: 0.3rem;
+
+}
+
+.trellie__header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.trellie__headerWrapper{
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.trellie__edit{
+    background: none;
+    border: none;
+    font-size: 120%;
+    line-height: 1;
+}
+
+.trellie__number{
+    background: #0003ac;
+    font-size: 90%;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    color: #eee;
+
+}
