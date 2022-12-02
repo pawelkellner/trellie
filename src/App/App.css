@@ -9,10 +9,14 @@ html{
 }
 
 body{
-    font-size: 2rem;
-    font-family: sans-serif;
+    font-size: 1.6rem;
+    font-family: 'Open Sans',sans-serif;
     background: #4649ff;
 }
 
-#root{
+#root{ 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
