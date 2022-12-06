@@ -9,14 +9,13 @@ html{
 }
 
 body{
+    padding: 2rem;
     font-size: 1.6rem;
     font-family: 'Open Sans',sans-serif;
     background: #4649ff;
 }
 
 #root{ 
-    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 4rem;
 }

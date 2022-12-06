@@ -1,16 +1,19 @@
+import React from "react";
 import "./Activity.css";
 
-const Activity = ({activity}) =>{
-    return(
+const Activity = (props) => {
+
+    return (
         <li className="activity">
             <h3 className="activity__label">
-                {activity.label || "----"}
+                {props.activity.label || "----"}
             </h3>
             <p className="activity__description">
-                {activity.description || "Placeholder description"}
+                {props.activity.description || "Placeholder description"}
             </p>
         </li>
     );
 }
+
 
 export default Activity;
