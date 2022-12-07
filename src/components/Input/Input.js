@@ -1,35 +1,46 @@
-import "./Input.css"
-
+import "./Input.css";
+import { connect } from "react-redux";
 import React from "react";
 
-class Input extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = ({
-            inputValue: ""
-        })
-    }
+const Input = (props) => {
+  const inputTracking = (e) => {
+      props.setInputValueFromRedux(e.target.value);
+  };
 
-    inputTracking = (e) =>{
-        this.setState({ inputValue: e.target.value})
+  const onInputSubmit = (e) => {
+    e.preventDefault();
+    if (props.inputValueFromRedux !== "") {
+      props.onActivityAdded(props.inputValueFromRedux);
     }
+  };
 
-    onInputSubmit = (e) =>{
-        e.preventDefault();
-        if(this.state.inputValue !== ""){
-            this.props.onActivityAdded(this.state.inputValue)
-            this.setState({ inputValue: ""})
-        }
-    }
+  return (
+    <form onSubmit={onInputSubmit} className="input">
+      <label htmlFor="input" className="input__label">
+        Nieuwe activiteit
+      </label>
+      <input
+        onChange={inputTracking}
+        id="input"
+        className="input__input"
+        type="text"
+        value={props.inputValueFromRedux}
+        placeholder="Voeg een Trellie toe!"
+      />
+    </form>
+  );
+};
 
-    render(){
-        return(
-            <form onSubmit={this.onInputSubmit} className="input">
-                <label htmlFor="input" className="input__label">Nieuwe activiteit</label>
-                <input onChange={this.inputTracking} id="input" className="input__input" type="text" value={this.state.inputValue} placeholder="Voeg een Trellie toe!"/>
-            </form>
-        );
+const mapStateToProps = (state) => {
+  return {
+    inputValueFromRedux: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        setInputValueFromRedux: (payload) => dispatch({type: "test", payload:payload})
     }
 }
 
-export default Input;
+export default connect(mapStateToProps, mapDispatchToProps)(Input);
