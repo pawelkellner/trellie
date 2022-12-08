@@ -1,14 +1,14 @@
-function myReducer(state, action){
-    if(typeof state === 'undefined'){
-        state = "Ben"
-        console.log(state)
-        return state
-    }
-    if(action.type === "test"){
+const trelliesReducer = (state = [], action) =>{
+    if(action.type === "TRELLIES"){
         state = action.payload
     }
-    return state
-    
+    return state;
 }
 
-export default myReducer;
+const rootReducer = (state = {}, action) => {
+        return {
+        trellies: trelliesReducer(state.trellies, action)
+        }
+}
+
+export default rootReducer;

@@ -1,35 +1,21 @@
 import React from "react";
 import Trellie from "../components/Trellie/Trellie";
 import trelliesObject from "../Data/trellie";
+import {connect} from "react-redux";
 import './App.css';
 
 class App extends React.Component{
-  constructor(){
-    super();
-    this.state = ({ 
-      trellies: [],
-      labelClicked: 0
-    })
+  constructor(props){
+    super(props);
   }
 
   componentDidMount(){
-    this.setState({ trellies: trelliesObject})
-  }
-
-  onActivityAdded = (input, id) =>{
-    let oldState = this.state.trellies;
-    let newState = {
-        id: oldState[id - 1].activities.length + 2,
-        label: "Vandaag",
-        description: input
-    }
-    oldState[id - 1].activities.push(newState);
-    this.setState({ trellies: oldState })
+    this.props.setTrelliesFromRedux(trelliesObject)
   }
 
   render(){
-    let render = this.state.trellies.map(object =>{
-      return <Trellie id={object.id} onActivityAdded={this.onActivityAdded} key={object.id} trellie={object} />
+    let render = this.props.trelliesFromRedux.map(object =>{
+      return <Trellie id={object.id} key={object.id} trellie={object} />
     })
     return (
       <>
@@ -39,4 +25,15 @@ class App extends React.Component{
   }
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+    return{
+      trelliesFromRedux: state.trellies
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
+  return{
+      setTrelliesFromRedux: (payload) => dispatch({type: "TRELLIES", payload: payload})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

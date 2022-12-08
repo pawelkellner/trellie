@@ -3,9 +3,6 @@ import Input from "../Input/Input";
 import "./Trellie.css";
 
 const Trellie = (props) => {
-    const onActivityAddedTrellie = (inputValue) => {
-        props.onActivityAdded(inputValue, props.id)
-    }
 
     let listItemsToBeRendered = props.trellie.activities.map(activity => {
         return (
@@ -30,7 +27,7 @@ const Trellie = (props) => {
                 {listItemsToBeRendered}
 
             </ul>
-            <Input onActivityAdded={onActivityAddedTrellie} />
+            <Input id={props.id}/>
         </section>
     );
 }
