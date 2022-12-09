@@ -1,19 +1,15 @@
-import React from "react";
 import "./Activity.css";
+import Label from "../Label/Label";
 
 const Activity = (props) => {
-
     return (
-        <li className="activity">
-            <h3 className="activity__label">
-                {props.activity.label || "----"}
-            </h3>
-            <p className="activity__description">
-                {props.activity.description || "Placeholder description"}
-            </p>
-        </li>
-    );
-}
-
+    <li className="activity">
+      <Label trellieId={props.id} activityId={props.key} activity={props.activity}/>
+      <p className="activity__description">
+        {props.activity.description || "Placeholder description"}
+      </p>
+    </li>
+  );
+};
 
 export default Activity;

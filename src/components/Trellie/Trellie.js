@@ -6,7 +6,7 @@ const Trellie = (props) => {
 
     let listItemsToBeRendered = props.trellie.activities.map(activity => {
         return (
-            <Activity key={activity.id} activity={activity} />
+            <Activity id={props.id} key={activity.id} activity={activity} />
         );
     })
 
