@@ -1,19 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-class Label extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {label: ""}
-        console.log(this.props.trelliesFromRedux[props.trellieId - 1].activities)
-    }
+const Label = (props) =>{
 
-    componentDidMount(){
-        this.setState({label: ""})
-    }
-
-    labelClicked = () =>{
-        let oldLabel = this.state.label;
+    const labelClicked = () =>{
+        let oldLabel = props.trelliesFromRedux[props.trellieId - 1].activities[props.activity.id - 1].label;
         let newLabel;
         switch(oldLabel){
             case 'Vandaag':
@@ -25,33 +16,23 @@ class Label extends React.Component{
             case 'Weekend':
                 newLabel = "Vandaag";
                 break;
+            default:
+                newLabel = "Vandaag";
         }
-        if(this.props.trelliesFromRedux[this.props.id - 1])
-        this.changeLabel(newLabel);
+        changeLabel(newLabel);
     }
 
-    changeLabel = (newLabel) => {
-        let oldActivity = [...this.props.trelliesFromRedux];
-        let newActivity = oldActivity[this.props.id - 1].activities.map((activity) => {
-            if(activity.id === activity.id){
-                activity.label = newLabel
-                return activity
-            }else{
-                return activity
-            }
-        })
-        oldActivity[this.props.id - 1].activities = newActivity;
-        console.log(oldActivity)
-        this.props.setTrelliesFromRedux(oldActivity)
+     const changeLabel = (newLabel) => {
+        let oldTrellies = [...props.trelliesFromRedux];
+        oldTrellies[props.trellieId - 1].activities[props.activity.id - 1].label = newLabel
+        props.setTrelliesFromRedux(oldTrellies)
     }
 
-    render(){
-        return(
-            <h3 onClick={this.labelClicked} className="activity__label">
-                    {this.state.label || "----"}
-            </h3>
-        );
-    }
+    return(
+        <h3 onClick={labelClicked} className="activity__label">
+            {props.trelliesFromRedux[props.trellieId - 1].activities[props.activity.id - 1].label || "----"}
+        </h3>
+    );
 }
 
 const mapStateToProps = (state) =>{
