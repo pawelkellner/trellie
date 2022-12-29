@@ -1,13 +1,13 @@
 const data = [
     {
         id: 1,
-        title: "Todo lijst",
+        title: "Eigen taken",
         count: 4,
         activities: [
             {
                 id: 1,
                 label: "Vandaag",
-                description: "Video 2 maken"
+                description: "React verder leren"
             },
             {
                 id: 2,
@@ -22,34 +22,29 @@ const data = [
             {
                 id: 4,
                 label: "Vandaag",
-                description: "Chillen met vrienden"
+                description: "Hond uitlaten"
             },
         ]
     },
     {
         id: 2,
-        title: "Todo lijst",
-        count: 4,
+        title: "Werk",
+        count: 3,
         activities: [
             {
                 id: 1,
                 label: "Vandaag",
-                description: "Video 2 maken"
+                description: "Web design maken"
             },
             {
                 id: 2,
                 label: "Vandaag",
-                description: "Boodschappen doen"
+                description: "landing page layout maken"
             },
             {
                 id: 3,
                 label: "Vandaag",
-                description: "Naar de gym"
-            },
-            {
-                id: 4,
-                label: "Vandaag",
-                description: "Chillen met vrienden"
+                description: "Presentatie project maken"
             },
         ]
     }
