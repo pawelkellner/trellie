@@ -22,11 +22,12 @@ class Input extends React.Component {
     event.preventDefault();
     let oldState = [...this.props.trelliesFromRedux];
     let newState = {
-        id: oldState[this.props.id - 1].activities.length + 2,
+        id: oldState[this.props.id - 1].activities.length + 1,
         label: "Vandaag",
         description: this.state.inputValue
     }
     oldState[this.props.id - 1].activities.push(newState);
+    console.log(oldState)
     this.props.setTrelliesFromRedux(oldState)
   }
 

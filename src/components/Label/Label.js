@@ -25,8 +25,10 @@ const Label = (props) =>{
      const changeLabel = (newLabel) => {
         let oldTrellies = [...props.trelliesFromRedux];
         oldTrellies[props.trellieId - 1].activities[props.activity.id - 1].label = newLabel
-        props.setTrelliesFromRedux(oldTrellies)
+        props.setTrelliesFromRedux(oldTrellies);
     }
+
+    console.log(props.trelliesFromRedux[props.trellieId - 1].activities[props.activity.id - 1])
 
     return(
         <h3 onClick={labelClicked} className="activity__label">
